@@ -1,12 +1,21 @@
 # React Native Pin View
 
+## I'm rewriting this package (V3) with new features. If you have any idea/feature request please open an issue with `[FEATURE REQUEST]` label. 
+
+## If you have any request please contact me : [hi@talut.dev](hi@talut.dev)
+
 Easy, convenient, quick-forming PinView component. It runs smoothly for both IOS and Android, and has only keyboard and input. Thats means you can use everywhere also there is no need to run ```react-native link```
 
 <p align='center'><img src='https://taluttasgiran.com.tr/assets/demo-of-pinview.gif' alt='PinView 1'></p>
 
-##### What's new at v2.4.0
-- Added new feautres for Button Delete (buttonDeletePosition, buttonDeleteStyle) [https://github.com/talut/react-native-pin-view/pull/33](https://github.com/talut/react-native-pin-view/pull/33)
+##### What's new at v2.4.1
+- Minor styling issues.
+- Fix type definition for `deleteText` [https://github.com/talut/react-native-pin-view/pull/35](https://github.com/talut/react-native-pin-view/pull/35)
+
+###### What's new at v2.4.0
+- Added new features for Button Delete (buttonDeletePosition, buttonDeleteStyle) [https://github.com/talut/react-native-pin-view/pull/33](https://github.com/talut/react-native-pin-view/pull/33)
 - Fix pin length issue [https://github.com/talut/react-native-pin-view/pull/35](https://github.com/talut/react-native-pin-view/pull/35)
+
 
 ###### What's new at v2.3.1
 - keyboardContainerStyle added. [https://github.com/talut/react-native-pin-view/pull/22](https://github.com/talut/react-native-pin-view/pull/22)
@@ -15,10 +24,6 @@ Easy, convenient, quick-forming PinView component. It runs smoothly for both IOS
 
 ###### What's new at v2.2.2
 - KeyboardViewTextStyle added. [https://github.com/talut/react-native-pin-view/pull/21](https://github.com/talut/react-native-pin-view/pull/21)
-
-###### What's new at v2.2.1
-- With this update you can change input style and keyboard number style.
-- Typescript definitions added.
 
 ###### TODO's
 
@@ -50,7 +55,7 @@ npm install --save react-native-pin-view
 
 ```
 
-import PinView from 'react-native-pin-view'
+import PinView from 'react-native-pin-view';
 
 ...
         <PinView
@@ -65,6 +70,7 @@ import PinView from 'react-native-pin-view'
 | ------------------------ | --------- | ------- | ----------------------------------------------------------------------------------------------------- | -------- |
 | **`buttonTextColor`**    | `string`  | `#333`  | Color of the texts on the number keyboard.                                                            | No       |
 | **`buttonBgColor`**      | `string`  | `#FFF`  | Background of the buttons on the number keyboard                                                      | No       |
+| **`buttonActiveOpacity`**| `number`  | `0.9`    | This prop is for styling keyboard button opacity on press. | No       |
 | **`inputBgColor`**       | `string`  | `#333`  | Input color before entering the pin                                                                   | No       |
 | **`inputBgOpacity`**     | `number`  | `0.1`   | Input opacity before entering the pin                                                                 | No       |
 | **`inputActiveBgColor`** | `string`  | `#333`  | The input color that is active when entering the pin.                                                 | No       |
@@ -73,13 +79,13 @@ import PinView from 'react-native-pin-view'
 | **`returnType`**         | `string`  |`string` | _onComplete_ returning value type. It can be `string` or `array`| No      |
 | **`pinLength`**     | `number`  | none         | (Min length: `3` , Max length: `8`) User pin length like `this.state.pin.length` or `5` If you're using hashed pin then set default length all pin or use pin length.  | Yes      |
 | **`disabled`**           | `boolean` | false   | Optionally, you can set this props `true` or `false`. If `true`, the user can not enter the password. | No       |
-| **`delayBeforeOnComplete`**           | `number` | 175   | Optionally, you can set this props for delaying before onComplete event. | No       |
+| **`delayBeforeOnComplete`**           | `number` | `175`   | Optionally, you can set this props for delaying before onComplete event. | No       |
 | **`showInputs`**           | `boolean` | `false`   | If you want to show inputted pin use this props. | No       |
 | **`inputTextStyle`**           | `object` | `{color:'#FFF',fontWeight:'bold'}`   | This props for styling inputted pin text. | No       |
 | **`inputViewStyle`**           | `object` | `{borderRadius:6}`   | This props for styling input view item. | No       |
 | **`keyboardViewStyle`**           | `object` | `{borderRadius:6}`   | This props for styling keyboard view item. | No       |
 | **`keyboardViewTextStyle`**           | `object` | `{fontWeight:'normal'}`   | This props for styling keyboard view text. | No       |
-| **`keyboardContainerStyle`**           | `object` | `{marginTop:10}`   | This props for styling keyboard container view text. | No       |
+| **`keyboardContainerStyle`**           | `object` | `{marginTop:10}`   | This props for styling keyboard container view. | No       |
 | **`onPress`**         | `func`    | `undefined`    | When the user presses the keypad, the inputted **`value`** (PIN code) will return. Also **`clear()`** is returned and the value of the **pressed** key. So if you want to remove user input after **onPress** call **`clear()`** func in onPress, or if you want to disable a submit button when the PIN code is not completely filled you can check it's length with `value.length`. Usage: `onPress={(value, clear, pressed) => console.log('value', value, 'clear', clear, 'pressed', pressed)}`| No      |
 | **`buttonDeletePosition`**         | `string`    | `left`    | Delete button position **`left - right`** | No      |
 | **`buttonDeleteStyle`**         | `object`    | `undefined`    | Delete button style | No      |
@@ -89,7 +95,7 @@ import PinView from 'react-native-pin-view'
 ```javascript
 import React, { Component } from 'react';
 import { View } from 'react-native';
-import PinView from 'react-native-pin-view'
+import PinView from 'react-native-pin-view';
 
 type Props = {};
 export default class Master extends Component<Props> {
@@ -98,19 +104,19 @@ export default class Master extends Component<Props> {
     this.onComplete = this.onComplete.bind(this);
     this.state = {
         pin: "896745"
-    }
+    };
   }
   onComplete(inputtedPin, clear) {
-    if (val!==this.state.pin){
+    if (val !== this.state.pin) {
       clear();
     } else {
-      console.log("Pin is correct")
+      console.log("Pin is correct");
     }
   }
   onPress(inputtedPin, clear, pressed) {
     console.log("Pressed: "+ pressed);
-    console.log("inputtedPin: "+ inputtedPin)
-    // clear()
+    console.log("inputtedPin: "+ inputtedPin);
+    // clear();
   }
   render() {
     return (

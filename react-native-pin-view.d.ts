@@ -10,29 +10,29 @@ declare module "react-native-pin-view" {
   type onPressCallback = (value: string, pressed: boolean, clear: () => void) => void
 
   interface PinViewProps {
-    pinLength?: number
-    showInputs?: boolean
-    onExit?: Function
-    exit?: string | object | boolean
-    exitStyle?: TextStyle
-    inputTextStyle?: TextStyle
-    buttonTextColor?: string
-    returnType?: string
-    buttonBgColor?: string
-    inputBgColor?: string
-    onComplete: onCompleteCallback
-    onPress?: onPressCallback
-    disabled?: boolean
-    inputActiveBgColor?: string
-    inputBgOpacity?: number
-    deleteText?: string
-    buttonDeletePosition?: string
-    buttonDeleteStyle?: ViewStyle
-    delayBeforeOnComplete?: number
-    inputViewStyle?: ViewStyle
-    keyboardViewStyle?: ViewStyle
-    keyboardViewTextStyle?: TextStyle
-    keyboardContainerStyle?: ViewStyle
+      pinLength?: number
+      showInputs?: boolean
+      onExit?: Function
+      exit?: string | object | boolean
+      exitStyle?: TextStyle
+      inputTextStyle?: TextStyle
+      buttonTextColor?: string
+      returnType?: string
+      buttonBgColor?: string
+      inputBgColor?: string
+      onComplete: onCompleteCallback
+      onPress?: onPressCallback
+      disabled?: boolean
+      inputActiveBgColor?: string
+      inputBgOpacity?: number
+      deleteText?: string
+      buttonDeletePosition?: string
+      buttonDeleteStyle?: ViewStyle
+      delayBeforeOnComplete?: number
+      inputViewStyle?: ViewStyle
+      keyboardViewStyle?: ViewStyle
+      keyboardViewTextStyle?: TextStyle
+      keyboardContainerStyle?: ViewStyle
   }
 
   const PinView: React.FunctionComponent<PinViewProps>

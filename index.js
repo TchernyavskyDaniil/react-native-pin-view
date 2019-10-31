@@ -27,7 +27,7 @@ class PinView extends React.Component {
       {
         toValue: status ? 1 : 0, // Animate to final value of 1
         duration: 100,
-      }
+      },
     ).start() // Start the animation
     this.setState({
       animatedDeleteButtonOnPress: !status,
@@ -69,7 +69,7 @@ class PinView extends React.Component {
                 console.log("Unkown return type!")
               }
             }, this.props.delayBeforeOnComplete)
-          }
+          },
         )
       } else {
         this.userInput = this.userInput.concat(parseInt(val))
@@ -105,6 +105,7 @@ class PinView extends React.Component {
       onPress,
       buttonDeletePosition,
       buttonDeleteStyle,
+      buttonActiveOpacity,
       onExit,
       exit,
       exitStyle,
@@ -141,6 +142,7 @@ class PinView extends React.Component {
             onPress={onPress}
             buttonDeletePosition={buttonDeletePosition}
             buttonDeleteStyle={buttonDeleteStyle}
+            buttonActiveOpacity={buttonActiveOpacity}
             exit={exit || 'empty'}
             onExit={onExit}
             exitStyle={exitStyle}
@@ -170,6 +172,7 @@ PinView.defaultProps = {
   onPress: undefined,
   buttonDeletePosition: "left",
   buttonDeleteStyle: StyleSheet.create({}),
+  buttonActiveOpacity: 0.9,
   onExit: () => {},
   exit: 'empty',
   exitStyle: StyleSheet.create({}),
@@ -195,6 +198,7 @@ PinView.propTypes = {
   onPress: PropTypes.func,
   buttonDeletePosition: PropTypes.string,
   buttonDeleteStyle: ViewPropTypes.style,
+  buttonActiveOpacity: PropTypes.number,
   onExit: PropTypes.func,
   exit: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.bool]),
   exitStyle: ViewPropTypes.style,
